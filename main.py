@@ -39,12 +39,12 @@ with st.container():
         This application performs **multi-label classification** on automotive reviews  
         It is capable of identifying multiple sentiments or aspects from a single text, including:
 
-        - ⛽ **Fuel**
-        - 🛠️ **Machine**
-        - 🔩 **Parts**
-        - 💵 **Price**
-        - 👨‍🔧 **Service**
-        - ⚙️ **Others**
+        - **Fuel**
+        - **Machine**
+        - **Parts**
+        - **Price**
+        - **Service**
+        - **Others**
 
         Navigate through the sidebar to explore data, train models, and make predictions!
         """)
