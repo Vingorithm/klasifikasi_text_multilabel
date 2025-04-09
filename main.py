@@ -63,7 +63,7 @@ col2.metric("📌 Total Features", df.shape[1])
 st.dataframe(df.head(5), use_container_width=True)
 
 # ---------- FOOTER ----------
-st.markdown("""---""")
+st.markdown('---')
 st.markdown(
     "<p style='text-align: center; color: gray;'>© 2025 Kevin Philips Tanamas | All Rights Reserved</p>",
     unsafe_allow_html=True
