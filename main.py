@@ -1,12 +1,13 @@
 from utils.data_loader import load_data
 import streamlit as st
 
-# Set page configuration
+# Set page configuration (MUST be the first Streamlit command)
 st.set_page_config(
-    page_title="🔧 Multi-label Text Classification - Kevin Philips Tanamas",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    page_title="Multi-label Text Classification",
+    layout="wide"
 )
+
+# Now we can import other modules and set up session state
 
 # Initialize session state variables
 if 'trained_model' not in st.session_state:
@@ -22,49 +23,28 @@ if 'label_columns' not in st.session_state:
 if 'df' not in st.session_state:
     st.session_state.df = load_data()
 
-# ---------- HEADER ----------
-st.markdown("""
-    <h1 style='text-align: center; color: #27AE60;'>🚗 Automotive Review Multi-label Classification</h1>
-    <h4 style='text-align: center; color: gray;'>by <i>Kevin Philips Tanamas</i></h4>
-""", unsafe_allow_html=True)
+# Add title and description
+st.title("Automotive Reviews Multi-label Text Classification")
+st.markdown("Multi-label classification for automotive reviews across different aspects: fuel, machine, and parts.")
 
-st.markdown("""---"")
+# Main page content
+st.write("""
+## Welcome to the Multi-label Text Classification App
+         
+This application demonstrates text classification that can predict multiple labels simultaneously.
 
-# ---------- INTRODUCTION ----------
-with st.container():
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.subheader("📋 About This App")
-        st.markdown("""
-        This application performs **multi-label classification** on automotive reviews  
-        It is capable of identifying multiple sentiments or aspects from a single text, including:
+### Available Pages:
 
-        - **Fuel**
-        - **Machine**
-        - **Parts**
-        - **Price**
-        - **Service**
-        - **Others**
+1. **Dataset Explorer** - Explore and understand the dataset
+2. **Model Training** - Train and evaluate multi-label classification models
+3. **Prediction** - Make predictions on new text inputs
 
-        Navigate through the sidebar to explore data, train models, and make predictions!
-        """)
-    with col2:
-        st.image("https://cdn-icons-png.flaticon.com/512/5987/5987462.png", width=220)
+Use the sidebar to navigate between pages.
+""")
 
-# ---------- DATASET OVERVIEW ----------
-st.markdown('---')
-st.subheader("📊 Dataset Overview")
-
+# Show dataset overview
+st.subheader("Dataset Overview")
 df = st.session_state.df
-col1, col2 = st.columns(2)
-col1.metric("🧾 Total Samples", df.shape[0])
-col2.metric("📌 Total Features", df.shape[1])
-
-st.dataframe(df.head(5), use_container_width=True)
-
-# ---------- FOOTER ----------
-st.markdown('---')
-st.markdown(
-    "<p style='text-align: center; color: gray;'>© 2025 Kevin Philips Tanamas | All Rights Reserved</p>",
-    unsafe_allow_html=True
-)
+st.write(f"Number of samples: {df.shape[0]}")
+st.write(f"Number of features: {df.shape[1]}")
+st.dataframe(df.head(5))
