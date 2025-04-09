@@ -52,7 +52,7 @@ with st.container():
         st.image("https://cdn-icons-png.flaticon.com/512/5987/5987462.png", width=220)
 
 # ---------- DATASET OVERVIEW ----------
-st.markdown("""---""")
+st.markdown('---')
 st.subheader("📊 Dataset Overview")
 
 df = st.session_state.df
